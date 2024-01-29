@@ -1,0 +1,19 @@
+{
+  "name": "assignmenttask",
+  "version": "1.0.0",
+  "description": "assignment task ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Praveen077Kumar/Innovatrix_Infotech_assignment_task.git"
+  },
+  "author": "Praveen Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Praveen077Kumar/Innovatrix_Infotech_assignment_task/issues"
+  },
+  "homepage": "https://github.com/Praveen077Kumar/Innovatrix_Infotech_assignment_task#readme"
+}
