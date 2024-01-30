@@ -1,9 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from 'cors';
 
 const PORT = 3300;
+const corsOptions = {
+  origin:'*',
+  Credentials:true,
+  //access-control-allow-credentials:true
+   optionSuccessStatus:200,
 
+}
 dotenv.config();
 mongoose
   .connect(process.env.MongoUri)
@@ -17,13 +25,16 @@ mongoose
 //initialize the app
 const app = express();
 
+
 //initialize the routes
 import userRoutes from "./routes/authentication.route.js";
 
 //middleware
 app.use(express.json());
+app.use(cors(corsOptions));
+app.use(cookieParser());
 
-app.use("/user", userRoutes);
+app.use("/api/user", userRoutes);
 
 // for error handling middleware
 app.use((err, req, res, next) => {

@@ -21,7 +21,6 @@ export const userSignup = async (req, res, next) => {
 
 export const userSignin = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
   try {
     const userExisted = await User.findOne({ email });
     if (!userExisted) {
