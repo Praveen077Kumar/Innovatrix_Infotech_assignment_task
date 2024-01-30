@@ -1,4 +1,4 @@
-import errorHandling from "./errorHandling";
+import errorHandling from "./errorHandling.js";
 import jwt from "jsonwebtoken";
 
 export const varifyAccessToken = (req, res, next) => {

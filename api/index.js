@@ -28,7 +28,7 @@ const app = express();
 
 //initialize the routes
 import authRoutes from "./routes/authentication.route.js";
-import userRoutes from "./routes/user.route.js"
+import userRoutes from "./routes/userData.route.js"
 
 //middleware
 app.use(express.json());
