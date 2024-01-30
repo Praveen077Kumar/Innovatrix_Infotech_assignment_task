@@ -1,5 +1,4 @@
-
-# Innovatrix Infotech
+# Innovatrix Infotech 🎆
 
 An assignment task for "Innovatrix Infotech" using MERN stack development.
 
@@ -8,17 +7,20 @@ An assignment task for "Innovatrix Infotech" using MERN stack development.
 ![Logo](https://blog.hyperiondev.com/wp-content/uploads/2018/09/Blog-Article-MERN-Stack.jpg)
 
 
-## Features
+## Features 🫰
 
-- The user signs up
-- The user logs in
+-  The user signs up
+-  The user logs in
 -  user is able to add and update their name and age
 -  Multiple users can register and sign in with different emails and passwords
 -  Everyone should be able to update their name and age
-- Once the user updates the name or the age, it should show instantaneous effect.
+-  Once the user updates the name or the age, it should show instantaneous effect.
+-  authentication and authorization implimentation 
+-  used redux , reduxToolKit from state Management 
+-  used tailwind for better and easy integration of CSS classes
 
 
-## Run Locally
+## Run Locally 🏃 🏃
 
 Clone the project
 
@@ -45,46 +47,58 @@ Start the server
 ```
 
 
-## API Reference
+## API Reference ✈️ 
 
-#### Get all items
+#### Get items
 
 ```http
-  GET /api/items
+  GET /api/userdata/data/${user_id}
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| `user_id` | `string` | **Required**. Your API key  |
 
-#### Get item
+
 
 ```http
-  GET /api/items/${id}
+  POST /api/userdata/create
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `body:{name,age}` | `string` | **Required**. access_token |
 
-#### add(num1, num2)
 
-Takes two numbers and returns the sum.
+```http
+  POST /api/userdata/update/${item_id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `body:{name,age,user_ref}` | `string` | **Required**. access_token |
 
 
 ## Lessons Learned
-
-What did you learn while building this project? What challenges did you face and how did you overcome them?
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+learned many things related to state managemnet and token uses, localStorage, persited data handling and many more.
 
 
-## Tech Stack
+## Screenshots 📷
 
-**Client:** React, Redux, TailwindCSS
+![App Screenshot](./images/Screenshot%202024-01-31%20044102.png)
 
-**Server:** Node, Express
+![App Screenshot](./images/Screenshot%202024-01-31%20044113.png)
+
+![App Screenshot](./images/Screenshot%202024-01-31%20044205.png)
+
+
+## Tech Stack 🧑‍💻
+
+**Client:** React, Redux, ReduxToolKit, react-router-dom, Jsx, TailwindCSS
+
+**Server:** Node, Express, Cors, Mongoose
+
+
+
+##Thanks for Reading ME 👍 👍
 

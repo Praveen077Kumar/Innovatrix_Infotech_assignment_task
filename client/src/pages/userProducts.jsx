@@ -78,7 +78,7 @@ export default function UserProducts() {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto bg-slate-400 ">
+    <div className="p-3 max-w-lg mx-auto ">
       <button
         onClick={handleShowData}
         className="p-3 ml-40 border rounded-lg bg-blue-950 text-2xl text-white  my-7"
@@ -102,7 +102,7 @@ export default function UserProducts() {
               <div className=" ml-16 flex flex-col font-semibold truncate w-full items-center self-center bg-grey-300">
                 <label htmlFor="name">Name: </label>
                 <input
-                  className="p-3 bg-green-300 text-center font-bold"
+                  className="p-3 bg-gray-400 text-center font-bold outline-none"
                   defaultValue={data.name}
                   id="name"
                   onChange={changeHanlder}
@@ -110,17 +110,17 @@ export default function UserProducts() {
                 <br />
                 <label htmlFor="name">Age: </label>
                 <input
-                  className="p-3 bg-grey-300 text-center font-bold"
+                  className="bg-gray-400 p-3 bg-grey-300 text-center font-bold outline-none"
                   defaultValue={data.age}
                   id="age"
                   onChange={changeHanlder}
                 />
               </div>
               <div className="flex flex-col items-center">
-                <button className=" ml-40 border text-white m-2 bg-red-700 rounded-lg p-2 uppercase" onClick={(e) => handleDeleteItem(e,data._id)}>Delete</button>
+                <button className=" ml-40 border text-white m-2 bg-red-600 rounded-lg p-2 uppercase" onClick={(e) => handleDeleteItem(e,data._id)}>Delete</button>
                 <button
                   type="submit"
-                  className="ml-40 border rounded-lg p-2 bg-lime-700 text-white font-bold uppercase"
+                  className="ml-40 border rounded-lg p-2 bg-lime-600 text-white font-bold uppercase"
                   onClick={(e) => handleUpdateItem(e,data._id)}
                 >
                   Edit Data
