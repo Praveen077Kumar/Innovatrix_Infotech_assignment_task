@@ -1,13 +1,14 @@
-// import {useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useState} from 'react'
 import {useNavigate}  from 'react-router-dom'
 
 export default function CreateUserData() {
-    // const {currentUser} = useSelector(state => state.user)
+    const {currentUser} = useSelector(state => state.user)
      const navigate = useNavigate()
     const [formdata, setFormData] = useState({
         name:"",
-        age:null
+        age:null,
+        userRef: "",
     });    
     console.log(formdata)
     const handleInputChange = (event)=>{
@@ -25,6 +26,7 @@ export default function CreateUserData() {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 ...formdata,
+                userRef: currentUser._id,
                 [event.target.id] : event.target.value,
               })
       });

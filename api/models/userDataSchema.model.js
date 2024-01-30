@@ -9,6 +9,10 @@ const userSchema = new Mongoose.Schema({
     age:{
         type: Number,
         required: true,
+    },
+    userRef:{
+        type:String,
+        required: true,
     }
 });
 
