@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export default function Signin() {
   const [dataForm, setDataForm] = useState({});
   const handleInputChange = (event) => {
@@ -51,6 +52,12 @@ export default function Signin() {
           Sign in
         </button>
       </form>
+      <div className="flex gap-2 mt-5">
+          <p> haven&apos;t an account ?</p>
+          <Link to={"/signup"}>
+            <span className="text-blue-700">Sign up</span>
+          </Link>
+        </div>
     </div>
   );
 }
