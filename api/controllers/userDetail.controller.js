@@ -24,3 +24,28 @@ export const getUserData = async( req, res, next ) => {
         return next(errorHandling(401, 'No data available!'));
     }
 }
+
+
+export const updateUserData = async(req,res,next)=>{
+  
+    const dataItem = await UserData.findById(req.params.id);
+    if(!dataItem){
+        return next(errorHandling(401, 'No data available!'));
+    } 
+
+    if(req.user.id !==  dataItem.userRef){
+        return next(errorHandling(401,"you can only update your own data"));
+    }
+
+    try {
+        const updatedItem = await UserData.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true}
+        );
+        res.status(200).json(updatedItem);
+
+    } catch (error) {
+        next(error)
+    }
+}
