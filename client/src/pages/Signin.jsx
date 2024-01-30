@@ -1,7 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/Slices/userSlice";
+
 export default function Signin() {
   const [dataForm, setDataForm] = useState({});
+  const { loading, error } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleInputChange = (event) => {
     setDataForm({
       ...dataForm,
@@ -12,20 +23,23 @@ export default function Signin() {
   const handleSubmitForm = async (event) => {
     event.preventDefault();
     try {
-      const res = await fetch("/api/user/signin",{
+      dispatch(signInStart());
+      const res = await fetch("/api/user/signin", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataForm)
-      })
+        body: JSON.stringify(dataForm),
+      });
       const dataResponse = await res.json();
-      if(dataResponse.success=== false) {
-        res.status(401).send('Login failed! Please try again')
+      if (dataResponse.success === false) {
+        dispatch(signInFailure(dataResponse.message));
         return;
       }
+      dispatch(signInSuccess(dataResponse));
+      navigate("/");
     } catch (error) {
-      console.error(error.message);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -48,16 +62,20 @@ export default function Signin() {
           id="password"
           onChange={handleInputChange}
         />
-        <button className="bg-blue-950 p-3 text-white border rounded-lg uppercase hover:opacity-75">
-          Sign in
+       <button
+          disabled={loading}
+          className="bg-slate-800 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-60"
+        >
+          {loading ? "Loading..." : "Sign in"}
         </button>
       </form>
       <div className="flex gap-2 mt-5">
-          <p> haven&apos;t an account ?</p>
-          <Link to={"/signup"}>
-            <span className="text-blue-700">Sign up</span>
-          </Link>
-        </div>
+        <p> haven&apos;t an account ?</p>
+        <Link to={"/signup"}>
+          <span className="text-blue-700">Sign up</span>
+        </Link>
+      </div>
+       {error && <p className="text-red-600 mt-4">{error}</p>}
     </div>
   );
 }
