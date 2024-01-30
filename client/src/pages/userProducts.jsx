@@ -57,6 +57,26 @@ export default function UserProducts() {
     }
   };
 
+
+  const handleDeleteItem = async (e, ItemId) => {
+    try{
+      const res = await fetch (`/api/userdata/delete/${ItemId}`,{
+        method: 'DELETE'
+      });
+      const data= await res.json();
+      if(data.success === false){
+        console.log(data.message);
+        return 
+      }
+      setUserData((prev)=> prev.filter((item)=>{
+        item._id !== ItemId
+      }))
+
+    }catch(e){
+      console.error(e.message);
+    }
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto bg-slate-400 ">
       <button
@@ -97,7 +117,7 @@ export default function UserProducts() {
                 />
               </div>
               <div className="flex flex-col items-center">
-                <button className=" ml-40 border text-white m-2 bg-red-700 rounded-lg p-2 uppercase">Delete</button>
+                <button className=" ml-40 border text-white m-2 bg-red-700 rounded-lg p-2 uppercase" onClick={(e) => handleDeleteItem(e,data._id)}>Delete</button>
                 <button
                   type="submit"
                   className="ml-40 border rounded-lg p-2 bg-lime-700 text-white font-bold uppercase"
