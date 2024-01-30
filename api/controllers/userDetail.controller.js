@@ -49,3 +49,23 @@ export const updateUserData = async(req,res,next)=>{
         next(error)
     }
 }
+
+
+
+export const deleteUserData = async(req,res,next) => {
+    const userItem = await UserData.findById(req.params.id);
+    if(!userItem){
+        return next(errorHandling(401, 'No data available!'));
+    } 
+
+    if(req.user.id !==  userItem.userRef){
+        return next(errorHandling(401,"you can only update your own data"));
+    }
+    try{
+        await UserData.findByIdAndDelete(req.params.id);
+        res.status(200).json('Item Has Been Deleted! ')
+    }
+    catch(error){
+        next(error);
+    }
+}
