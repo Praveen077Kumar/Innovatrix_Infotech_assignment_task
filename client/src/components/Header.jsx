@@ -28,6 +28,13 @@ export default function Header() {
               </li>
             )}
           </Link>
+          <Link to="/userData">
+            {currentUser ? (
+             <li className="sm:inline text-white hover:underline">User Data</li>
+            ) : (
+             ''
+            )}
+          </Link>
         </ul>
       </div>
     </header>

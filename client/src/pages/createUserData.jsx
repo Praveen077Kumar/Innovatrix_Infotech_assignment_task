@@ -1,5 +1,6 @@
 import {useSelector} from 'react-redux';
 import {useState} from 'react'
+
 import {useNavigate}  from 'react-router-dom'
 
 export default function CreateUserData() {
@@ -35,7 +36,7 @@ export default function CreateUserData() {
         console.log(data.message);
         return;
       }
-      navigate(`/userdata/${data._id}`)
+      navigate(`/`)
     } catch (error) {
       console.log(error.message);
     }
