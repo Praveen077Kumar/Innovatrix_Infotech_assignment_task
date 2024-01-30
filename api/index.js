@@ -27,14 +27,16 @@ const app = express();
 
 
 //initialize the routes
-import userRoutes from "./routes/authentication.route.js";
+import authRoutes from "./routes/authentication.route.js";
+import userRoutes from "./routes/user.route.js"
 
 //middleware
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
-app.use("/api/user", userRoutes);
+app.use("/api/user", authRoutes);
+app.use("/api/userdata",userRoutes)
 
 // for error handling middleware
 app.use((err, req, res, next) => {
