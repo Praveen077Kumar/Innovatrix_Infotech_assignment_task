@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from 'cors';
+import path from 'path';
 
 const PORT = 3300;
 const corsOptions = {
@@ -22,6 +23,9 @@ mongoose
     console.error(err);
   });
 
+
+const __dirname = path.resolve()
+
 //initialize the app
 const app = express();
 
@@ -37,6 +41,12 @@ app.use(cookieParser());
 
 app.use("/api/user", authRoutes);
 app.use("/api/userdata",userRoutes)
+
+app.use(express.static(path.join(__dirname,'/client/dist')));
+
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,'client','dist','index.html'));
+});
 
 // for error handling middleware
 app.use((err, req, res, next) => {
